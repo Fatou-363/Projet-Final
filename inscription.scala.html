@@ -1,0 +1,23 @@
+@import play.mvc.Http.Request
+@(pForm: Form[Utilisateur])(implicit request: Request, messages: play.i18n.Messages)
+
+@main("Fatoumata") {
+
+    <div class="contener">
+        
+        <div class="ssbloc1">
+         <h1> Saisisez votre ouvrage </h1>
+          @helper.form(action = routes.UserController.inscriptionForm) {
+            @helper.CSRF.formField
+            @helper.inputText(pForm("pseudo")) 
+            @helper.inputText(pForm("nom")) 
+            @helper.inputText(pForm("prenom")) 
+            @helper.inputPassword(pForm("motDepasse"))
+            @helper.select(field = pForm("status"),options = Seq("etudiant"->"etudiant", "thésard"->"thésard","personnel"->"personnel"))
+
+            <input type="submit" value="sauvegarder"/> 
+          }
+        </div>     
+    </div>
+
+}

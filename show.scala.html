@@ -1,0 +1,120 @@
+
+     @(livre: Livre, user : String)
+
+
+
+    @main("Welcome to Play") {
+
+    <div style="color:white">utilisateur : @user</div>
+
+    <div class="contener">
+        <div class="ssbloc1"> 
+            <h1> Mon Livre </h1>
+            <table style="width:100%">
+            <tr>
+                <td>Titre</td>
+                <td>: @livre.titre</td>
+            </tr>
+            <tr>
+                <td>Auteur</td>
+                <td>: @livre.auteur</td>
+            </tr>
+            <tr>
+                <td>Date d'edition</td>
+                <td>: @livre.dateEdition</td>
+            </tr>
+            <tr>
+                <td>Catégorie</td>
+                <td>: @livre.categorie</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>: @livre.description</td>
+            </tr>
+            <tr>
+                <td>Emprunté</td>
+                <td>: 
+                @if(livre.isEmprunte != null) {
+                   par  @livre.isEmprunte  
+                }else{
+                    Non
+                } 
+                </td>
+                @if(user != "annonyme") {
+                <td>
+                @if(livre.isEmprunte != null) {
+                    @if(user == livre.isEmprunte) {
+                    <a href="/livre/@livre.id/rendre">Rendre </a> 
+                    }
+                }else{
+                    <a href="/livre/@livre.id/emprunter/@user">Emprunter </a> 
+                } 
+                </td>
+                }
+            </tr> 
+            <tr>
+                <td>Empruntable</td>
+                <td>: 
+                @if(livre.isEmpruntable == false) {
+                    Oui
+                }else{
+                    Non
+                }
+                </td>
+                @if(user != "annonyme") {
+                <td>
+                @if(livre.isEmpruntable == false) {
+                 <a href="/livre/@livre.id/empruntable">Empruntable  à Non </a>
+                }else{
+                     <a href="/livre/@livre.id/empruntable">Empruntable à Oui </a>
+                }
+                </td>
+                }
+            </tr>
+            <tr>
+                <td>En reparation</td>
+                <td>: 
+                @if(livre.EnReparation == true) {
+                    Oui
+                }else{
+                    Non
+                }
+                </td>
+                @if(user != "annonyme") {
+                <td>
+                @if(livre.EnReparation == true) {
+                     <a href="/livre/@livre.id/reparation">Reparation  à Non </a>
+                }else{
+                     <a href="/livre/@livre.id/reparation">Reparation à Oui </a>
+                }
+                </td>
+                }
+            </tr>
+            <tr>
+                <td>Perdu</td>
+                <td>: 
+                @if(livre.isPerdu == true) {
+                    Oui
+                }else{
+                    Non
+                }
+                </td>
+                @if(user != "annonyme") {
+                <td>
+                @if(livre.isPerdu == true) {
+                     <a href="/livre/@livre.id/perdu">Perdu  à Non </a>
+                }else{
+                     <a href="/livre/@livre.id/perdu">Perdu à Oui </a>
+                }
+                </td>
+                }
+            </tr>
+            </table>
+            @if(user != "annonyme") {
+            <a href="/livre/@livre.id/update">modifier </a> 
+            <a href="/livre/@livre.id/delete">supprimer </a> 
+            }
+
+        </div>
+    </div>
+    }

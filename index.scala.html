@@ -1,0 +1,28 @@
+  @(liste: List[Livre], user : String)
+
+
+
+@main("Welcome to Play") {
+    
+  
+<div style="color:white">utilisateur : @user</div>
+
+
+    <div class="contener">
+       
+        
+        <div class="ssbloc1">
+             <h1 style="color:white; text-align: center;"> Mes Livres </h1>
+          @for(livre <- liste) {
+            <div class="bloc_livre">
+                <strong> @livre.auteur, @livre.titre  </strong>
+                <p class=pPrincipale> 
+                    @livre.description
+                </p> 
+                <a href="/livre/@livre.id">consulter </a> 
+            </div>
+           }
+        </div>
+        
+    </div>
+}

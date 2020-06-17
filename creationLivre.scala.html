@@ -1,0 +1,23 @@
+@import play.mvc.Http.Request
+@(pForm: Form[Livre])(implicit request: Request, messages: play.i18n.Messages)
+
+@main("Fatoumata") {
+
+    <div class="contener">
+        
+        <div class="ssbloc1">
+         <h1> Saisisez votre ouvrage </h1>
+          @helper.form(action = routes.HomeController.creerLivreform) {
+            @helper.CSRF.formField
+            @helper.inputText(pForm("titre")) 
+            @helper.inputText(pForm("auteur")) 
+            @helper.inputDate(pForm("dateEdition"))
+            @helper.inputText(pForm("categorie"))
+            @helper.inputText(pForm("description"))
+
+            <input type="submit" value="sauvegarder"/> 
+          }
+        </div>     
+    </div>
+
+}

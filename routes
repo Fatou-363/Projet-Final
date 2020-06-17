@@ -1,0 +1,31 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                                   controllers.HomeController.index(request : Request)
+
+GET     /creerLivre                         controllers.HomeController.creerLivre(request : Request)
+POST    /creerLivreform                     controllers.HomeController.creerLivreform(request : Request)
+GET     /livre/:id                          controllers.HomeController.show(id : Long, request : Request)
+GET     /livre/:id/delete                   controllers.HomeController.delete(id : Long)
+GET     /livre/:id/update                   controllers.HomeController.update(id : Long, request : Request)
+GET     /livre/:id/emprunter/:pseudo        controllers.HomeController.emprunter(id : Long, pseudo : String,request : Request)
+GET     /livre/:id/rendre                   controllers.HomeController.rendre(id : Long, request : Request)
+GET     /livre/:id/empruntable              controllers.HomeController.empruntable(id : Long, request : Request)
+GET     /livre/:id/reparation               controllers.HomeController.reparation(id : Long, request : Request)
+GET     /livre/:id/perdu                    controllers.HomeController.perdu(id : Long, request : Request)
+POST     /updateOk/:id                      controllers.HomeController.updateOk(id: Long, request : Request)
+
+
+
+GET     /inscription                         controllers.UserController.inscription(request : Request)
+POST    /inscriptionform                     controllers.UserController.inscriptionForm(request : Request)
+GET     /membre                              controllers.UserController.membre()
+
+GET     /connexion                          controllers.UserController.connexion(request : Request)
+POST    /connexionform                      controllers.UserController.connexionForm(request : Request)
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

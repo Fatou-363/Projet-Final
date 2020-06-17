@@ -1,0 +1,24 @@
+  @(liste: List[Utilisateur])
+
+
+
+@main("Welcome to Play") {
+    
+
+
+    <div class="contener">
+        
+        <div class="ssbloc1">
+            <h1> La liste des membres </h1>
+          @for(user <- liste) {
+            <div class="bloc_livre">
+                <strong> @user.pseudo, @user.nom @user.prenom  </strong>
+                <p class=pPrincipale> 
+                    <a href="/livre/@user.id"> </a> 
+                </p> 
+            </div>
+           }
+        </div>
+        
+    </div>
+}

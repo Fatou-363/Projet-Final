@@ -1,0 +1,24 @@
+@import play.mvc.Http.Request
+@(pForm: Form[Utilisateur], error : Boolean)(implicit request: Request, messages: play.i18n.Messages)
+
+@main("Connexion") {
+
+    <div class="contener">
+        
+        
+        <div class="ssbloc1">
+            @if(error == false) {
+                <div style="color:red">Information incorrecte</div>
+            }
+         <h1> Saisisez vos informations </h1>
+          @helper.form(action = routes.UserController.connexionForm) {
+            @helper.CSRF.formField
+            @helper.inputText(pForm("pseudo")) 
+            @helper.inputPassword(pForm("motDepasse"))
+    
+            <input type="submit" value="sauvegarder"/> 
+          }
+        </div>     
+    </div>
+
+}
